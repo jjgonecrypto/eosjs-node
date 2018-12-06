@@ -1,6 +1,6 @@
 {
   "name": "eosjs-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Nodejs wrapper with handy utilities for EOSJS",
   "main": "index.js",
   "dependencies": {
