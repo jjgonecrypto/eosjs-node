@@ -1,21 +1,22 @@
 'use strict';
 
+const path = require('path');
 const { TextEncoder, TextDecoder } = require('util');
 const fetch = require('node-fetch');
 const { Api, JsonRpc, JsSignatureProvider } = require('eosjs');
 
-require('dotenv').config({ path: '../.required.env' });
+require('dotenv').config({ path: path.join(__dirname, '/.required.env') });
 const { EOS_CHAIN_ID, EOSIO_PRIVATE_KEY } = process.env;
 
 const { deployContract } = require('./lib/deploy');
-const { createAction, sendTransaction } = require('./lib/util');
+const { createAction, sendTransaction } = require('./lib/transact');
 const { createAccount } = require('./lib/account');
 
 module.exports = {
-  connect({ nodeosUrl }) {
+  connect({ url }) {
     const signatureProvider = new JsSignatureProvider([EOSIO_PRIVATE_KEY]);
 
-    const rpc = new JsonRpc(nodeosUrl, { fetch });
+    const rpc = new JsonRpc(url, { fetch });
     const api = new Api({
       rpc,
       signatureProvider,
@@ -27,16 +28,16 @@ module.exports = {
     return Object.assign({ api }, module.exports);
   },
 
-  deploy({ account, contract = account, contractDir }) {
+  async deploy({ account, contract = account, contractDir }) {
     const { api } = this;
-    return deployContract({ api, account, contract, contractDir });
+    return await deployContract({ api, account, contract, contractDir });
   },
 
   createAction,
 
-  sendTransaction(actions) {
+  async sendTransaction(actions) {
     const { api } = this;
-    return sendTransaction({ api, actions });
+    return await sendTransaction({ api, actions });
   },
 
   createAccount({ account }) {
