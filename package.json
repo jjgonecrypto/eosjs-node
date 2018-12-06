@@ -1,0 +1,32 @@
+{
+  "name": "eosjs-node",
+  "version": "0.0.1",
+  "description": "Nodejs wrapper with handy utilities for EOSJS",
+  "main": "index.js",
+  "dependencies": {
+    "eosjs": "~20.0.0-beta2",
+    "eosjs-ecc": "~4.0.4",
+    "node-fetch": "~2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinjmoses/eosjs-node.git"
+  },
+  "keywords": [
+    "eosjs",
+    "nodejs"
+  ],
+  "author": "justin j. moses <justinjmoses@gmail.com>",
+  "contributors": [
+    "Christoph Michel (https://github.com/MrToph)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinjmoses/eosjs-node/issues"
+  },
+  "homepage": "https://github.com/justinjmoses/eosjs-node#readme"
+}
