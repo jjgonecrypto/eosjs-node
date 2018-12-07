@@ -11,6 +11,7 @@ const { EOS_CHAIN_ID, EOSIO_PRIVATE_KEY } = process.env;
 const { deployContract } = require('./lib/deploy');
 const { createAction, sendTransaction } = require('./lib/transact');
 const { createAccount } = require('./lib/account');
+const { generateAccountName } = require('./lib/util');
 
 module.exports = {
   connect({ url }) {
@@ -43,11 +44,10 @@ module.exports = {
   createAccount({ account }) {
     const { api } = this;
     return createAccount({ api, account });
-  }
+  },
+
+  generateAccountName,
 };
-
-
-
 
 // const eos = require('eosjs-node').connect({ nodeosUrl: 'http://localhost:7777' })
 

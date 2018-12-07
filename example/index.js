@@ -4,7 +4,7 @@ const path = require('path');
 const eos = require('..').connect({ url: 'http://127.0.0.1:7777' });
 
 (async () => {
-  const account = 'someaccount';
+  const account = eos.generateAccountName();
 
   try {
     await eos.createAccount({ account });
